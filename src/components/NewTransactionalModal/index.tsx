@@ -1,6 +1,6 @@
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useState } from "react";
 import Modal from "react-modal";
-import { TransactionsContext } from "../../TransactionsContext";
+import { useTransactions } from "../../hooks/useTransactions";
 
 import IncomeImg from '../../assets/income.svg';
 import OutcomeImg from '../../assets/outcome.svg';
@@ -19,7 +19,7 @@ export function NewTransactionModal({isOpen, onRequestClose}:NewTransactionModal
     const[type, setType] = useState('deposit');
     const[category, setCategory] = useState('');
 
-    const { createTransaction } = useContext(TransactionsContext);
+    const { createTransaction } = useTransactions();
 
     async function handleCreateNewTransaction(event: FormEvent){
         event.preventDefault();
